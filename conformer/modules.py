@@ -28,7 +28,7 @@ class Linear(nn.Module):
     def forward(self, x:torch.Tensor) -> torch.Tensor:
         return self.linear(x)
 ## 方便把转置操作集成到nn.Sequential中
-## 在需要导出模型时，将模型里的数据操作使用nn.module代替是个好习惯。
+## 在需要导出模型时，将模型里的数据操作使用nn.module代替是个好习惯,方便后续部署使得torchscript跟踪tensor。
 class Transpose(nn.Module):
     def __init__(self, shape: tuple):
         super(Transpose, self).__init__()
